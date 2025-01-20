@@ -1,7 +1,25 @@
-/* src/components/Footer.css */
-footer {
-    background-color: #333;
-    color: white;
-    padding: 20px;
+/* Estilos para o Footer */
+.footer {
+    background-color: #1E1E1E;  /* Preto */
+    color: #F4C430;             /* Amarelo */
     text-align: center;
+    padding: 20px 0;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+
+.footer p {
+    margin: 5px 0;
+    color: #FFFFFF;  /* Branco */
+}
+
+.footer a {
+    color: #27AE60;  /* Verde */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #F4C430;  /* Amarelo */
 }

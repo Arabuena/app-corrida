@@ -4,7 +4,7 @@ import React from 'react';
 const HomePage = () => {
     return (
         <div>
-            <h2>Bem-vindo à página inicial!</h2>
+            <h2>Bem-vindo ao App de Corrida</h2>
         </div>
     );
 };

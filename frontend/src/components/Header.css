@@ -1,7 +1,40 @@
-/* src/components/Header.css */
-header {
-    background-color: #282c34;
-    color: white;
-    padding: 10px;
-    text-align: center;
+/* Estilos para o Header */
+.header {
+    background-color: #1E1E1E;  /* Preto */
+    color: #F4C430;             /* Amarelo */
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #FFFFFF;  /* Branco */
+}
+
+.header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.header nav ul li {
+    display: inline;
+}
+
+.header nav ul li a {
+    text-decoration: none;
+    color: #27AE60;  /* Verde */
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.header nav ul li a:hover {
+    color: #F4C430;  /* Amarelo */
 }
