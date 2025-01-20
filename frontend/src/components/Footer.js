@@ -1,23 +1,13 @@
 import React from 'react';
+import './Footer.css'; // Estilos específicos para o Footer
 
 const Footer = () => {
-    return (
-        <footer style={styles.footer}>
-            <p>&copy; {new Date().getFullYear()} Meu Projeto React. Todos os direitos reservados.</p>
-        </footer>
-    );
-};
-
-const styles = {
-    footer: {
-        backgroundColor: '#282c34',
-        color: 'white',
-        textAlign: 'center',
-        padding: '10px 0',
-        position: 'fixed',
-        bottom: '0',
-        width: '100%',
-    }
+  return (
+    <footer className="footer">
+      <p>&copy; 2025. Todos os direitos reservados a App de Corrida.</p>
+      <p>Produzido por <a href="https://pixalar.vercel.app/" target="_blank" rel="noopener noreferrer">Pixelar</a></p>
+    </footer>
+  );
 };
 
 export default Footer;

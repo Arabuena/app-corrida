@@ -1,66 +1,84 @@
+/* Reset de margens e padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Garantir que o body ocupe 100% da altura da tela */
+html, body {
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  background-color: #111; /* Fundo escuro */
+  color: #fff; /* Texto branco */
+}
+
+/* Container principal que ocupa toda a altura da tela */
 .App {
-  text-align: center;
-}
-
-/* Estilização do logo */
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-/* Cabeçalho principal */
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 100%;
   padding: 20px;
 }
 
-/* Links com cor personalizada e acessibilidade */
-.App-link {
-  color: #61dafb;
+/* Estilo do header */
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: #FF5722; /* Cor vibrante */
+}
+
+/* Estilo do botão */
+button {
+  background-color: #FF5722;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e64a19; /* Cor de hover */
+}
+
+/* Estilo do conteúdo principal */
+main {
+  flex-grow: 1;
+  text-align: center;
+  padding: 30px;
+  background-image: url('https://path-to-your-race-image.jpg'); /* Imagem de fundo com tema de corrida */
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+
+main h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #FF5722; /* Cor vibrante */
+}
+
+/* Footer estilizado */
+footer {
+  background-color: #282c34;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin-top: auto;
+}
+
+footer a {
+  color: #FF5722; /* Cor de link */
   text-decoration: none;
 }
 
-.App-link:hover {
+footer a:hover {
   text-decoration: underline;
-}
-
-.App-link:focus {
-  outline: 2px solid #fff;
-}
-
-/* Animação de rotação do logo */
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Responsividade para telas menores */
-@media (max-width: 768px) {
-  .App-header {
-    font-size: 16px;
-    padding: 20px;
-  }
-}
-
-/* Suporte para modo escuro */
-.dark-mode .App-header {
-  background-color: #1c1f26;
-  color: #f0f0f0;
 }
