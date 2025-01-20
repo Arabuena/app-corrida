@@ -2,6 +2,7 @@
   text-align: center;
 }
 
+/* Estilização do logo */
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -13,6 +14,7 @@
   }
 }
 
+/* Cabeçalho principal */
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -22,12 +24,24 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding: 20px;
 }
 
+/* Links com cor personalizada e acessibilidade */
 .App-link {
   color: #61dafb;
+  text-decoration: none;
 }
 
+.App-link:hover {
+  text-decoration: underline;
+}
+
+.App-link:focus {
+  outline: 2px solid #fff;
+}
+
+/* Animação de rotação do logo */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +49,18 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  .App-header {
+    font-size: 16px;
+    padding: 20px;
+  }
+}
+
+/* Suporte para modo escuro */
+.dark-mode .App-header {
+  background-color: #1c1f26;
+  color: #f0f0f0;
 }
