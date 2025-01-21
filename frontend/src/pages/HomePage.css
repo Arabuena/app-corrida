@@ -1,0 +1,40 @@
+.homepage {
+    text-align: center;
+    padding: 20px;
+    position: relative;
+  }
+  
+  .homepage .highlight-text {
+    background-color: rgba(0, 0, 0, 0.5);  /* Fundo semitransparente */
+    color: white;  /* Cor do texto */
+    padding: 10px 20px;
+    border-radius: 10px;  /* Arredonda os cantos */
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);  /* Sombra para destacar */
+    margin: 10px 0;
+  }
+  
+  .homepage .favicon {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 5px solid #808080;
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .homepage .favicon {
+      width: 200px;
+      height: 200px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .homepage .favicon {
+      width: 150px;
+      height: 150px;
+    }
+  }
+  

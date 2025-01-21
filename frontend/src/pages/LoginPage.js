@@ -1,51 +1,66 @@
 import React, { useState } from 'react';
-import './LoginPage.css'; // Estilos específicos para a página de login
+import './LoginPage.css';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-  const handleLogin = (e) => {
+  // Função para lidar com o envio do formulário
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Lógica de login aqui (exemplo fictício)
-    console.log('Logando com:', email, password);
+    
+    const userCredentials = { email, password };
+    
+    try {
+      const response = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userCredentials),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Salvar o token no localStorage ou contexto de autenticação
+        localStorage.setItem('token', data.token);
+        // Redirecionar para a página inicial ou dashboard
+        window.location.href = '/home';
+      } else {
+        setError(data.message || 'Erro ao fazer login');
+      }
+    } catch (err) {
+      setError('Erro de conexão');
+    }
   };
 
   return (
     <div className="login-container">
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <div className="input-group">
-          <label htmlFor="email">E-mail</label>
+      <form onSubmit={handleSubmit}>
+        <h2>Login</h2>
+        <div>
+          <label>Email:</label>
           <input
             type="email"
-            id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
-        <div className="input-group">
-          <label htmlFor="password">Senha</label>
+        <div>
+          <label>Senha:</label>
           <input
             type="password"
-            id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
+        {error && <div className="error-message">{error}</div>}
         <button type="submit">Entrar</button>
       </form>
-
-      <div className="social-login">
-        <button>Login com Facebook</button>
-        <button>Login com Google</button>
-      </div>
-
-      <div className="signup-link">
-        <p>Não tem uma conta? <a href="/signup">Criar conta</a></p>
-      </div>
     </div>
   );
 };
