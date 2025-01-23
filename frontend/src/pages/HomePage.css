@@ -37,4 +37,23 @@
       height: 150px;
     }
   }
+  .auth-buttons {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .register-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .register-button:hover {
+    background-color: #218838;
+  }
   

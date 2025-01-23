@@ -27,12 +27,12 @@ const LoginPage = () => {
         // Salvar o token no localStorage ou contexto de autenticação
         localStorage.setItem('token', data.token);
         // Redirecionar para a página inicial ou dashboard
-        window.location.href = '/home';
+        window.location.href = '/home';  // Mude para a rota do seu dashboard
       } else {
         setError(data.message || 'Erro ao fazer login');
       }
     } catch (err) {
-      setError('Erro de conexão');
+      setError('Erro de conexão com o servidor');
     }
   };
 
