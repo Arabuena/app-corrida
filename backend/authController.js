@@ -1,3 +1,4 @@
+/*authController.js*/
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User'); // Supondo que você tenha um modelo de usuário no banco de dados
