@@ -1,23 +1,19 @@
 const jwt = require('jsonwebtoken');
 
-// Middleware para verificar o token JWT
-const verifyToken = (req, res, next) => {
-  const token = req.headers['authorization']?.split(' ')[1]; // Bearer <token>
-  
+const protectedRoute = (req, res, next) => {
+  const token = req.header('Authorization')?.replace('Bearer ', '');
+
   if (!token) {
-    return res.status(403).json({ message: 'Acesso negado' });
+    return res.status(401).json({ message: 'Acesso negado. Token não fornecido' });
   }
-  
+
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded; // Adiciona os dados do usuário ao request
-    next(); // Chama o próximo middleware ou a função de rota
+    req.user = decoded;
+    next();
   } catch (error) {
-    return res.status(403).json({ message: 'Token inválido ou expirado' });
+    res.status(400).json({ message: 'Token inválido' });
   }
 };
 
-// Exemplo de rota protegida
-app.get('/api/auth/protectedRoute', verifyToken, (req, res) => {
-  res.json({ message: 'Acesso permitido!', user: req.user });
-});
+module.exports = protectedRoute;

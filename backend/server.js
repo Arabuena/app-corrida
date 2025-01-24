@@ -1,27 +1,18 @@
 const express = require('express');
-const cors = require('cors');
-const connectDB = require('./config/database'); // Importando a conexão consolidada
-require('dotenv').config();
-
-// Importando rotas
-const authRoutes = require('./routes/authRoutes');
-const rideRoutes = require('./routes/rideRoutes');  // Rota de corridas
+const connectDB = require('./database');  // Arquivo de conexão do MongoDB
 
 const app = express();
+const port = 3000;
 
-// Middlewares
-app.use(cors());
-app.use(express.json()); // Para permitir o uso de JSON nas requisições
+// Middleware para analisar corpo de requisições
+app.use(express.json());
 
-// Rotas
-app.use('/api/auth', authRoutes);
-app.use('/api/rides', rideRoutes);
-
-// Conectar ao banco de dados
+// Conectar ao MongoDB
 connectDB();
 
-// Definição da porta do servidor
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`🚀 Servidor rodando na porta ${PORT}`);
+// Definir rotas
+app.use('/api/auth', require('./routes/users'));
+
+app.listen(port, () => {
+  console.log(`Servidor rodando na porta ${port}`);
 });

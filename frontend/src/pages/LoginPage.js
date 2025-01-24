@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './LoginPage.css';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   // Função para lidar com o envio do formulário
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const userCredentials = { email, password };
-    
+
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch('http://localhost:3000/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -26,8 +28,8 @@ const LoginPage = () => {
       if (response.ok) {
         // Salvar o token no localStorage ou contexto de autenticação
         localStorage.setItem('token', data.token);
-        // Redirecionar para a página inicial ou dashboard
-        window.location.href = '/home';  // Mude para a rota do seu dashboard
+        // Redireciona para a página inicial ou dashboard
+        navigate('/home'); // Mude para a rota do seu dashboard
       } else {
         setError(data.message || 'Erro ao fazer login');
       }

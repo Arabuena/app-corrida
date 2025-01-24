@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './RegisterPage.css';
 
 const RegisterPage = () => {
@@ -7,14 +8,42 @@ const RegisterPage = () => {
     email: '',
     password: '',
   });
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Formulário enviado:', formData);
+
+    const userData = { 
+      name: formData.name, 
+      email: formData.email, 
+      password: formData.password 
+    };
+
+    try {
+      const response = await fetch('http://localhost:3000/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Se o cadastro for bem-sucedido, redireciona para a página de login
+        navigate('/login'); // Redireciona para a página de login
+      } else {
+        setError(data.message || 'Erro ao cadastrar');
+      }
+    } catch (err) {
+      setError('Erro de conexão com o servidor');
+    }
   };
 
   return (
@@ -45,6 +74,7 @@ const RegisterPage = () => {
           onChange={handleChange} 
           required 
         />
+        {error && <div className="error-message">{error}</div>}
         <button type="submit" className="register-button">Cadastrar</button>
       </form>
       <a href="/login" className="register-link">Já tem uma conta? Faça login</a>
