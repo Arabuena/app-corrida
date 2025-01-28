@@ -2,20 +2,3 @@ backups de codigos tempor\303\241rios.txt
 
 node_modules/
 .env
-# Ignorar a conexão com o banco de dados
-backend/connectDB.js
-
-# Ignorar pastas de controladores e rotas
-backend/controllers/
-backend/routes/
-
-# Ignorar arquivos de teste
-backend/testConnection.js
-# Ignorar a conexão com o banco de dados
-backend/connectDB.js
-
-# Ignorar pastas de controladores e rotas
-backend/controllers/
-
-# Ignorar arquivos de teste
-backend/testConnection.js

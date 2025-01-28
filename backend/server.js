@@ -1,18 +1,18 @@
-const express = require('express');
-const connectDB = require('./database');  // Arquivo de conexão do MongoDB
+require('dotenv').config();
 
-const app = express();
-const port = 3000;
+const mongoose = require('mongoose');
 
-// Middleware para analisar corpo de requisições
-app.use(express.json());
+// Pegando a URI do banco de dados do .env
+const mongoUri = process.env.MONGO_URI;
 
-// Conectar ao MongoDB
-connectDB();
+if (!mongoUri) {
+  console.error('Erro: A variável de ambiente MONGO_URI não está definida.');
+  process.exit(1);
+}
 
-// Definir rotas
-app.use('/api/auth', require('./routes/users'));
-
-app.listen(port, () => {
-  console.log(`Servidor rodando na porta ${port}`);
-});
+mongoose.connect(mongoUri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log('MongoDB conectado com sucesso!'))
+.catch((err) => console.error('Erro ao conectar com o MongoDB:', err));
