@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Para navegação
 import Header from './components/Header';
 import Footer from './components/Footer';
-import LoginPage from './pages/LoginPage';
+import LoginPage from './pages/login';
 import HomePage from './pages/HomePage';
-import RegisterPage from './pages/RegisterPage';
+import RegisterPage from './pages/register';
 
 function App() {
   return (
